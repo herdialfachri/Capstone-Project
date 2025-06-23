@@ -47,11 +47,8 @@ class RelativeActivity : AppCompatActivity() {
 
             val user = db.userDao().login(email, password)
             if (user != null) {
-                
                 val intent = Intent(this, ProfileActivity::class.java).apply {
-                    putExtra("id", user.id)
                     putExtra("name", user.name)
-                    putExtra("email", user.email)
                 }
                 startActivity(intent)
                 finish()

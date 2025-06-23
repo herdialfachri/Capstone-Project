@@ -5,11 +5,17 @@ import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import com.example.projectlatihan.dao.UserDao
+import com.example.projectlatihan.dao.MahasiswaDao
 import com.example.projectlatihan.entity.UserEntity
+import com.example.projectlatihan.entity.MahasiswaEntity
 
-@Database(entities = [UserEntity::class], version = 1)
+@Database(
+    entities = [UserEntity::class, MahasiswaEntity::class],
+    version = 1
+)
 abstract class AppDatabase : RoomDatabase() {
     abstract fun userDao(): UserDao
+    abstract fun mahasiswaDao(): MahasiswaDao
 
     companion object {
         @Volatile
@@ -23,6 +29,7 @@ abstract class AppDatabase : RoomDatabase() {
                     "user_database"
                 )
                     .allowMainThreadQueries()
+                    .fallbackToDestructiveMigration(false)
                     .build().also { INSTANCE = it }
             }
         }

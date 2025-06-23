@@ -27,6 +27,11 @@ android {
             )
         }
     }
+
+    buildFeatures {
+        viewBinding = true
+    }
+
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
@@ -41,6 +46,10 @@ dependencies {
     // library database room
     implementation(libs.androidx.room.runtime)
     kapt(libs.androidx.room.compiler)
+
+    // library glide untuk gambar
+    implementation("com.github.bumptech.glide:glide:4.15.1")
+    annotationProcessor("com.github.bumptech.glide:compiler:4.15.1")
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
